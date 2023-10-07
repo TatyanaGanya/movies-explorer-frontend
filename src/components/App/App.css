@@ -1,0 +1,24 @@
+.app {
+  margin: 0 auto;
+  padding: 0;
+  font-family: "Inter", "Arial", sans-serif;
+  font-style: normal;
+}
+
+@media screen and (max-width: 768px) {
+  .lock {
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    height: 100vh;
+  }
+}
+
+/*
+transition: opacity 0.3s linear;
+cursor: pointer;
+}
+
+.error__link:hover {
+opacity: 0.7;
+} */
