@@ -1,6 +1,6 @@
-import img from "../images/card.png";
-import img2 from "../images/card_1.png";
-import img3 from "../images/card_3.png";
+import img from "../images/card.jpg";
+import img2 from "../images/card_1.jpg";
+import img3 from "../images/card_3.jpg";
 
 export const movies = [
   {

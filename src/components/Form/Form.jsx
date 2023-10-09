@@ -13,11 +13,12 @@ function Form({ name, children, isValid, onSubmit }) {
       {children}
       {name === "signup" ? (
         <>
-          <span className=" autorization__error profile__error-request">
+          <span className=" autorization__error request-error">
             {"При входе произошла ошибка."}
           </span>
           <button
-            to={"/"}
+            type="submit"
+            disabled={!isValid}
             className={`autorization__button ${
               isValid ? "" : "autorization__button_disabled"
             }`}
@@ -27,11 +28,12 @@ function Form({ name, children, isValid, onSubmit }) {
         </>
       ) : name === "signin" ? (
         <>
-          <span className="autorization__error profile__error-login">
+          <span className="autorization__error login-error">
             {"При регистрации произошла ошибка."}
           </span>
           <button
-            to={"/"}
+            type="submit"
+            disabled={!isValid}
             className={`autorization__button ${
               isValid ? "" : "autorization__button_disabled"
             }`}

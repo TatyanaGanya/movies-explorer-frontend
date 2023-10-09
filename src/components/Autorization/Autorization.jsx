@@ -5,13 +5,13 @@ import Form from "../Form/Form.jsx";
 
 function Autorization({ name, children, isValid, onSubmit }) {
   return (
-    <section className="autorization">
+    <main className="autorization">
       <Link to={"/"}>
         <img src={logo} alt="Логотип" className="autorization__logo" />
       </Link>
-      <h2 className="autorization__title">
+      <h1 className="autorization__title">
         {name === "signin" ? "Рады видеть!" : "Добро пожаловать!"}
-      </h2>
+      </h1>
       <Form name={name} isValid={isValid} onSubmit={onSubmit}>
         {children}
       </Form>
@@ -32,7 +32,7 @@ function Autorization({ name, children, isValid, onSubmit }) {
       ) : (
         <Link to={"/"}>Выйти из аккаунта</Link>
       )}
-    </section>
+    </main>
   );
 }
 

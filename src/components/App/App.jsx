@@ -11,7 +11,6 @@ import Login from "../Login/Login.jsx";
 import Profile from "../Profile/Profile.jsx";
 import Movies from "../Movies/Movies.jsx";
 import SavedMovies from "../SavedMovies/SavedMovies.jsx";
-import { useEffect } from "react";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -24,7 +23,6 @@ function App() {
       setActiveState((prev) => !prev);
     }
   }
-
 
   return (
     //  <CurrentUserContext.Provider>
@@ -97,6 +95,18 @@ function App() {
                 openHeader={openHeader}
               />
               <Profile name="profile" setLoggedIn={setLoggedIn} />
+            </>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <>
+              <Header
+                loggedIn={loggedIn}
+                activeState={activeState}
+                openHeader={openHeader}
+              />
             </>
           }
         />

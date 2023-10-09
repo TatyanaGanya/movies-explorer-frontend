@@ -10,18 +10,24 @@ function Portfolio() {
           <Link
             to={"https://tatyanaganya.github.io/russian-travel/"}
             className="portfolio__link"
+            target="_blank"
           >
             Статичный сайт
-            <button className="portfolio__link__button">↗</button>
+            <button className="portfolio__button" type="button">
+              ↗
+            </button>
           </Link>
         </li>
         <li className="portfolio__list">
           <Link
             to={"https://tatyanaganya.github.io/mesto-react/"}
             className="portfolio__link"
+            target="_blank"
           >
             Адаптивный сайт
-            <button className="portfolio__link__button">↗</button>
+            <button className="portfolio__button" type="button">
+              ↗
+            </button>
           </Link>
         </li>
 
@@ -29,9 +35,12 @@ function Portfolio() {
           <Link
             to={"https://mestofrontent.nomoredomainsicu.ru"}
             className="portfolio__link"
+            target="_blank"
           >
             Одностраничное приложение
-            <button className="portfolio__link__button">↗</button>
+            <button className="portfolio__button" type="button">
+              ↗
+            </button>
           </Link>
         </li>
       </ul>

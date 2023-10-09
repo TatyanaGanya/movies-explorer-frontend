@@ -9,8 +9,10 @@ function Input({
   error,
   value,
   minLength,
+  maxLength,
   selectname,
-}) {
+})
+{
   return (
     <>
       {selectname === "profile" ? (
@@ -21,6 +23,7 @@ function Input({
               type={type}
               name={name}
               minLength={minLength || ""}
+              maxLength={maxLength || ""}
               className={`profile__input ${
                 isInputValid === undefined || isInputValid
                   ? ""
@@ -28,13 +31,14 @@ function Input({
               }`}
               value={value || ""}
               onChange={onChange}
+              placeholder={title}
               required
             />
           </label>
-          <span className="profile__error">{error}</span>
+          <span className="profile-error">{error}</span>
         </>
       ) : (
-        <label className="login__laber">
+        <label className="login">
           <span className="login__title">{title}</span>
           <input
             className={`login__input ${
@@ -46,12 +50,13 @@ function Input({
             type={type}
             value={value || ""}
             minLength={minLength || ""}
+            maxLength={maxLength || ""}
+            placeholder={title}
             autoComplete="on"
             onChange={onChange}
             required
           />
-
-          <span className="profile__error">{error}</span>
+          <span className="profile-error">{error}</span>
         </label>
       )}
     </>

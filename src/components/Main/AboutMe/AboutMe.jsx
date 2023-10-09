@@ -8,7 +8,7 @@ function AboutMe() {
     <Cover title="Студент">
       <div className="aboutme">
         <div>
-          <h2 className="aboutme__title">Татьяна</h2>
+          <h3 className="aboutme__title">Татьяна</h3>
           <p className="aboutme__subtitle">Фронтенд-разработчик, 36 лет</p>
           <p className="aboutme__description">
             Я родилась и живу в Санкт-Петербрге, закончила факультет культуры
@@ -19,12 +19,13 @@ function AboutMe() {
           <Link
             to={"https://github.com/TatyanaGanya?tab=repositories"}
             className="aboutme__button"
+            target="_blank"
           >
             Github
           </Link>
         </div>
 
-        <img src={foto} alt="Фото" className="aboutme__foto" />
+        <img src={foto} alt="фотография фронтенд-разработчика" className="aboutme__foto" />
       </div>
     </Cover>
   );

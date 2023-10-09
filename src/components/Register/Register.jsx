@@ -26,6 +26,7 @@ function Register({ name, setLoggedIn }) {
         type="text"
         title="Имя"
         minLength="2"
+        maxLength="40"
         value={values.username}
         isInputValid={isInputValid.username}
         error={error.username}
@@ -49,6 +50,7 @@ function Register({ name, setLoggedIn }) {
         type="password"
         title="Пароль"
         minLength="3"
+        maxLength="40"
         value={values.password}
         isInputValid={isInputValid.password}
         error={error.password}

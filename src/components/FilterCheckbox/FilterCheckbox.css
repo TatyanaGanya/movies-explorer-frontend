@@ -2,7 +2,7 @@
     display: flex;
     align-self: flex-start;
     z-index: 1;
-    margin: 0 auto;
+    margin: 0;
     max-width: 1140px;
   }
 
@@ -20,6 +20,12 @@
     width: 36px;
     height: 20px;
     z-index: 1;
+    transition: opacity 0.3s linear;
+    cursor: pointer;
+  }
+
+  .filter__switch {
+    opacity: 0.7;
   }
 
   .filter__switch input {
@@ -75,8 +81,14 @@
 
   @media screen and (max-width: 768px) {
     .filter {
-      align-self: flex-end;
       flex-direction: row-reverse;
+      grid-column-start: 1;
+      grid-column-end: 3;
+      grid-row-start: 2;
+      grid-row-end: 2;
+      margin: 0;
+      padding: 0;
+      align-items: center;
     }
   }
 
@@ -85,6 +97,7 @@
     .filter__text {
       margin-left: 0;
       margin-right: 14px;
+      padding: 0;
     }
   }
 
@@ -95,7 +108,13 @@
       line-height: 18px;
       margin-right: 9px;
     }
+
     .filter {
       justify-content: center;
+      grid-column-start: 1;
+      grid-column-end: 3;
+      grid-row-start: 2;
+      grid-row-end: 3;
+      margin: 0;
     }
   }

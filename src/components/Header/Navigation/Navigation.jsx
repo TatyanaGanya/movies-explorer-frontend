@@ -2,11 +2,10 @@ import "./Navigation.css";
 import { NavLink, useLocation } from "react-router-dom";
 import acount from "../../../images/acount.svg";
 import Burger from "../Header-burger/Header-burger.jsx";
-
+import { Link } from "react-router-dom";
 
 function Navigation({ activeState, loggedIn, openHeader }) {
   const { pathname } = useLocation();
-
 
   return (
     <>
@@ -22,7 +21,6 @@ function Navigation({ activeState, loggedIn, openHeader }) {
         </nav>
       ) : (
         <>
-          <Burger activeState={activeState} openHeader={openHeader} />
           <nav className={`navigation ${activeState ? "active" : ""}`}>
             <NavLink
               to={"/"}
@@ -54,17 +52,18 @@ function Navigation({ activeState, loggedIn, openHeader }) {
             >
               Сохранённые фильмы
             </NavLink>
-            <NavLink
-              to={"/profile"}
-              onClick={openHeader}
-              className={`header__button ${
-                pathname === "/" ? "header__button_background" : ""
-              } ${activeState ? "active" : ""}`}
-            >
-              <p>Аккаунт</p>
-              <img src={acount} alt="Фильмы" className="header__acount" />
-            </NavLink>
           </nav>
+          <Burger activeState={activeState} openHeader={openHeader} />
+          <Link
+            to={"/profile"}
+            onClick={openHeader}
+            className={`navigation__button ${
+              pathname === "/" ? "navigation__button_background" : ""
+            } ${activeState ? "active" : ""}`}
+          >
+            <p>Аккаунт</p>
+            <img src={acount} alt="Фильмы" className="header__acount" />
+          </Link>
         </>
       )}
     </>

@@ -10,7 +10,8 @@
   grid-template-columns: 2fr 310px;
   grid-template-rows: 174px 142px 35px;
   gap: 36px;
-  max-width: 1140px;
+  max-width: 1280px;
+  box-sizing: border-box;
 }
 
 .promo__img {
@@ -81,7 +82,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 140px auto 70px;
+    padding: 75px 0 75px;
     gap: 24px;
   }
 
@@ -127,6 +128,7 @@
     line-height: 38px;
     letter-spacing: -1px;
     word-spacing: -2px;
+    width: 99%;
   }
 
   .promo__suptitle {

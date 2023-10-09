@@ -1,9 +1,4 @@
 @media only screen and (max-width: 768px) {
-  .header__content {
-    display: flex;
-    justify-content: space-between;
-  }
-
   .header.active {
     height: 100%;
     width: 100%;
@@ -20,6 +15,8 @@
     width: 28px;
     height: 21px;
     z-index: 6;
+    position: absolute;
+    right: 33px;
   }
 
   .header__burger span {
@@ -73,5 +70,11 @@
 
   .header__burger.active span {
     transform: scale(0);
+  }
+}
+@media only screen and (max-width: 400px) {
+  .header__burger {
+    right: 15px;
+    top: 25px;
   }
 }

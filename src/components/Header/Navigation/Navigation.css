@@ -1,9 +1,9 @@
 .navigation {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   padding: 0;
-  margin: 0;
+  margin: 0 auto;
 }
 
 .navigation__link {
@@ -35,7 +35,7 @@
   display: none;
 }
 
-.header__button {
+.navigation__button {
   max-width: 100px;
   height: 32px;
   box-sizing: content-box;
@@ -44,7 +44,6 @@
   justify-content: space-between;
   align-items: center;
   margin: 0;
-  margin-left: 30px;
   text-decoration: none;
   color: #000;
   box-shadow: 0 3px 14px rgba(0, 0, 0, 0.2);
@@ -58,11 +57,11 @@
   transition: opacity 0.3s linear;
   cursor: pointer;
 }
-.header__button:hover {
+.navigation__button:hover {
   opacity: 0.7;
 }
 
-.header__button_background {
+.navigation__button_background {
   background-color: #2be080;
 }
 
@@ -97,20 +96,26 @@
     text-align: center;
     color: #000;
     z-index: 5;
-    margin-top: 26px;
+    margin-top: 20px;
     font-weight: 500;
     font-size: 18px;
     line-height: 29.78px;
     padding: 0;
   }
 
-  .header__button {
+  .navigation__button {
+    display: none;
+  }
+
+  .navigation__button.active {
     display: flex;
     text-align: center;
     color: #000;
     z-index: 5;
     margin: auto;
-    margin-top: 435px;
+    position: fixed;
+    bottom: 89px;
+    right: 27%;
   }
 
   .navigation_link_page {
@@ -120,16 +125,21 @@
   }
 }
 
+@media only screen and (max-width: 620px) {
+  .navigation__button {
+    right: 35%;
+  }
+}
+
 @media only screen and (max-width: 520px) {
   .navigation {
     width: 100%;
   }
 
   .navigation.active {
-    padding-top: 128px;
+    padding-top: 123px;
     margin: 0 auto;
-    justify-content: space-between;
-    width: 100%;
+    margin: 0;
   }
 
   .navigation__link.active {
@@ -139,5 +149,17 @@
   .navigation_link_page {
     border-bottom: 2px solid #000;
     padding: 0 0 6px;
+  }
+
+  .navigation__button {
+    bottom: 126px;
+    right: 110px;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .navigation__button.active {
+    bottom: 45px;
+    right: 35%;
   }
 }

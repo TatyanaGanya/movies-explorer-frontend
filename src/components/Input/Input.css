@@ -16,7 +16,7 @@
   left: 0;
 }
 
-.login__laber {
+.login {
   font-weight: 500;
   font-size: 11px;
   line-height: 13px;
@@ -38,6 +38,10 @@
   text-align: left;
   width: 100%;
   border-bottom: #e8e8e8 1px solid;
+}
+
+.login__input:focus {
+  outline: 0.5px solid #3456F3;
 }
 
 .login__title {
@@ -68,7 +72,7 @@
   border: none;
 }
 
-.profile__error {
+.profile-error {
   font-weight: 500;
   font-size: 10px;
   line-height: 12px;

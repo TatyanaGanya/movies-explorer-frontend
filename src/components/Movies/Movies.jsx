@@ -22,10 +22,10 @@ function Movies() {
     }
   }
   return (
-    <>
+    <main>
             <SearchForm changeShot={onCheckMoviesAll} />
             <MoviesCardList movies={moviesAll} />
-  </>
+  </main>
   );
 }
 

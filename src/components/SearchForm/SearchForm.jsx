@@ -32,13 +32,16 @@ function SearchForm({ changeShot }) {
           onChange={handleChange}
           required
         />
-        <span className={`search__error ${isError && "search__error_active"}`}>
+        <span
+          className={`search-form__error ${isError && "search__error_active"}`}
+        >
           {isError ? "Введите ключевое слово" : ""}
         </span>
-        <button className="search-form__submit">Найти</button>
+        <button className="search-form__submit" type="button">
+          Найти
+        </button>
+        <FilterCheckbox changeShot={changeShot} />
       </form>
-      {/* <span className="search__error">Введите ключевое слово</span> */}
-      <FilterCheckbox changeShot={changeShot} />
     </>
   );
 }

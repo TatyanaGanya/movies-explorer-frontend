@@ -22,7 +22,7 @@ function MoviesCardList({ movies }) {
     setCount(count + printCards().step);
   }
   return (
-    <main className="cards">
+    <section className="cards">
       <ul className="cards__list">
         {fact.map((card) => {
           return (
@@ -45,7 +45,7 @@ function MoviesCardList({ movies }) {
       >
         Ёще
       </button>
-    </main>
+    </section>
   );
 }
 export default MoviesCardList;

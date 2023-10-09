@@ -19,8 +19,8 @@ function MoviesCard({ name, src, duration, movieLink }) {
   return (
     <li className="card">
       <article>
-        <Link to={movieLink} target="_blank">
-          <img src={src} alt={name} className="card__image" />
+        <Link to={movieLink} target="_blank" >
+          <img src={src} alt={name} className="card__image"/>
         </Link>
         <div className="card__item">
           <h2 className="card__title">{name}</h2>

@@ -20,11 +20,11 @@
   background: none;
   color: #ff004c;
 }
-.profile__error-login {
+.login-error {
   margin: 170px auto 14px;
 }
 
-.profile__error-request {
+.request-error {
   margin: 102px auto 14px;
 }
 
@@ -52,7 +52,7 @@
     flex-direction: column;
   }
 
-  .profile__error-request {
+  .request-error {
     margin: 102px auto 14px;
   }
 
@@ -91,6 +91,9 @@
   font-size: 11px;
   line-height: 13px;
 }
+.profile__input:focus {
+  outline: 0.5px solid #3456f3;
+}
 
 .profaile__change {
   margin: 183px auto 0;
@@ -112,21 +115,24 @@
 }
 
 @media only screen and (max-width: 520px) {
-  .autorization__form {
-    width: 260px;
+  .profile__form {
+    max-width: 260px;
   }
-  .profile__error-login {
+
+  .autorization__form {
+    max-width: 260px;
+  }
+
+  .login-error {
     margin: 258px auto 15px;
   }
 }
 
 @media only screen and (max-width: 320px) {
-  .profile__form {
-    width: 260px;
-  }
-  .profile__error-request {
+  .request-error {
     margin: 189px auto 16px;
   }
+
   .profile__change {
     font-size: 12px;
     line-height: 14px;

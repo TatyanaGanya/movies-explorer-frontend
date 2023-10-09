@@ -6,30 +6,32 @@ import Input from "../Input/Input";
 import { Link } from "react-router-dom";
 
 function Profile({ name, setLoggedIn }) {
-  const { values,error, isInputValid, isValid, handleChange, reset } =
+  const { values, error, isInputValid, isValid, handleChange, reset } =
     useFormValidation();
 
   useEffect(() => {
-    reset({ username: 'Виталий!', email: "pochta@yandex.ru", });
+    reset({ username: "Виталий!", email: "pochta@yandex.ru" });
   }, [reset]);
 
   function onEdit(e) {
     e.preventDefault();
   }
+
   function outLogin() {
     setLoggedIn(false);
   }
 
   return (
-    <section name="profile" title="Редактировать профиль" className="profile">
-      <h2 className="profile__title">Привет, Виталий!</h2>
+    <main name="profile" title="Редактировать профиль" className="profile">
+      <h1 className="profile__title">Привет, Виталий!</h1>
       <Form name={name} isValid={isValid} onSubmit={onEdit}>
         <Input
           selectname={name}
-          name='username'
-          type='text'
-          title='Имя'
-          minLength='3'
+          name="username"
+          type="text"
+          title="Имя"
+          minLength="3"
+          maxLength="40"
           value={values.username}
           isInputValid={isInputValid.username}
           error={error.username}
@@ -51,7 +53,7 @@ function Profile({ name, setLoggedIn }) {
       <Link to={"/"} onClick={outLogin} className="profile__out">
         Выйти из аккаунта
       </Link>
-    </section>
+    </main>
   );
 }
 

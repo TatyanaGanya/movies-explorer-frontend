@@ -16,9 +16,12 @@ function Header({ loggedIn, openHeader, activeState }) {
           className={`header__logo ${activeState ? "active" : ""}`}
           to={"/"}
         ></Link>
-        <Navigation loggedIn={loggedIn} openHeader={openHeader} activeState={activeState} />
+        <Navigation
+          loggedIn={loggedIn}
+          openHeader={openHeader}
+          activeState={activeState}
+        />
       </div>
-
     </header>
   );
 }
