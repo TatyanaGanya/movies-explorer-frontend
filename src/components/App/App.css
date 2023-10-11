@@ -1,0 +1,25 @@
+.app {
+  margin: 0 auto;
+  padding: 0;
+  font-family: "Inter", "Arial", sans-serif;
+  font-style: normal;
+  max-width: 1280px;
+  box-sizing: border-box;
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+@media screen and (max-width: 768px) {
+  .lock {
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    height: 100vh;
+  }
+}
+
+/*
+* {
+  outline: 1px solid red;
+} */

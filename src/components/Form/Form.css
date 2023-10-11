@@ -1,0 +1,144 @@
+.profile__form {
+  display: flex;
+  flex-direction: column;
+  width: 410px;
+}
+
+.autorization__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 396px;
+}
+
+.autorization-error {
+  opacity: 0;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13px;
+  border: none;
+  background: none;
+  color: #ff004c;
+}
+.login-error {
+  margin: 170px auto 14px;
+}
+
+.request-error {
+  margin: 102px auto 14px;
+}
+
+.profile__error-profile {
+  margin: 162px auto 14px;
+}
+
+.profile__change {
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 16px;
+  border: none;
+  background: none;
+  transition: opacity 0.3s linear;
+  cursor: pointer;
+}
+
+.profile__change:hover {
+  opacity: 0.7;
+}
+
+@media only screen and (max-width: 768px) {
+  .profile__form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .request-error {
+    margin: 102px auto 14px;
+  }
+
+  .profile__error-profile {
+    opacity: 0;
+    margin: 150px auto 14px;
+  }
+}
+
+/* не готова!!!! */
+.profile__laber {
+  border-bottom: #e8e8e8 1px solid;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 13px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.profile__laber:hover {
+  border-bottom: #ff3055 1px solid;
+}
+
+.profile__laber:last-child {
+  border-bottom: #da1010 1px solid;
+}
+
+.profile__input {
+  border: none;
+  text-align: right;
+  margin: 0;
+  padding: 0 0 17px;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 13px;
+}
+.profile__input:focus {
+  outline: 0.5px solid #3456f3;
+}
+
+.profaile__change {
+  margin: 183px auto 0;
+  padding: 0;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 15px;
+  text-decoration: none;
+  color: #000;
+}
+
+@media only screen and (max-width: 768px) {
+  .profaile__change {
+    margin: 175px auto 0;
+  }
+  .profaile__change {
+    margin: 343px auto 0;
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  .profile__form {
+    max-width: 260px;
+  }
+
+  .autorization__form {
+    max-width: 260px;
+  }
+
+  .login-error {
+    margin: 258px auto 15px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .request-error {
+    margin: 189px auto 16px;
+  }
+
+  .profile__change {
+    font-size: 12px;
+    line-height: 14px;
+  }
+  .profile__error-profile {
+    opacity: 0;
+    margin: 319px auto 14px;
+  }
+}

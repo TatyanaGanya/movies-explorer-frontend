@@ -1,0 +1,143 @@
+.promo {
+  width: 100%;
+  background-color: #073042;
+}
+
+.promo__container {
+  display: grid;
+  margin: 0 auto;
+  padding: 75px 70px 75px;
+  grid-template-columns: 2fr 310px;
+  grid-template-rows: 174px 142px 35px;
+  gap: 36px;
+  max-width: 1280px;
+  box-sizing: border-box;
+}
+
+.promo__img {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+.promo__title {
+  align-items: flex-start;
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 58px;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  max-width: 640px;
+}
+
+.promo__suptitle {
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 15.8px;
+  color: #fff;
+  margin: auto 0;
+  padding: 0;
+  opacity: 0.5;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  max-width: 310px;
+  display: block;
+  margin-top: 0;
+  margin-left: 0;
+}
+
+.promo__button {
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  padding: 9px 19px;
+  text-decoration: none;
+  margin: auto;
+  color: #000;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  color: #fff;
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  margin-left: 0;
+  transition: opacity 0.3s linear;
+  cursor: pointer;
+}
+
+.promo__button:hover {
+  opacity: 0.7;
+}
+
+@media only screen and (max-width: 1000px) {
+  .promo__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 75px 0 75px;
+    gap: 24px;
+  }
+
+  .promo__img {
+    margin: 65px 0 10px;
+  }
+
+  .promo__title {
+    margin: 14px 0 0;
+    max-width: 680px;
+    text-align: center;
+    font-size: 40px;
+    line-height: 50px;
+  }
+
+  .promo__suptitle {
+    margin: 0;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+    max-width: 260px;
+  }
+
+  .promo__button {
+    margin: 66px 0 0;
+  }
+}
+
+@media only screen and (max-width: 688px) {
+  .promo__container {
+    padding: 70px 0 30px;
+  }
+
+  .promo__img {
+    margin: 0;
+    width: 210px;
+    height: 206px;
+  }
+
+  .promo__title {
+    margin: 20px 0 0;
+    font-size: 30px;
+    line-height: 38px;
+    letter-spacing: -1px;
+    word-spacing: -2px;
+    width: 99%;
+  }
+
+  .promo__suptitle {
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  .promo__button {
+    margin: 55px 0 0;
+    padding: 10px 19px;
+  }
+}
