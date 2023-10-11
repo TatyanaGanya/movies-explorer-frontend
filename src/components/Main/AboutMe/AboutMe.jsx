@@ -25,7 +25,11 @@ function AboutMe() {
           </Link>
         </div>
 
-        <img src={foto} alt="фотография фронтенд-разработчика" className="aboutme__foto" />
+        <img
+          src={foto}
+          alt="фотография фронтенд-разработчика"
+          className="aboutme__foto"
+        />
       </div>
     </Cover>
   );

@@ -1,120 +1,118 @@
 .filter {
-    display: flex;
-    align-self: flex-start;
-    z-index: 1;
-    margin: 0;
-    max-width: 1140px;
-  }
+  display: flex;
+  align-self: flex-start;
+  z-index: 1;
+  margin: 0;
+  max-width: 1140px;
+}
 
+.filter__text {
+  padding-top: 3px;
+  margin-left: 14px;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+.filter__switch {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+  z-index: 1;
+  transition: opacity 0.3s linear;
+  cursor: pointer;
+}
+
+.filter__switch:hover {
+  opacity: 0.7;
+}
+
+.filter__switch input {
+  display: none;
+}
+
+.filter__silder {
+  position: absolute;
+  border-radius: 34px;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  background-color: #2be080;
+}
+
+.filter__silder:before {
+  position: absolute;
+  border-radius: 50%;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 18px;
+  bottom: 2px;
+  background-color: #fff;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .filter__silder {
+  background-color: #ebebeb;
+}
+
+input:focus + .filter__silder {
+  box-shadow: 0 0 1px #2be080;
+}
+
+input:checked + .filter__silder:before {
+  -webkit-transform: translateX(-16px);
+  -ms-transform: translateX(-16px);
+  transform: translateX(-16px);
+}
+
+@media only screen and (max-width: 1190px) {
+  .filter {
+    margin: 0 30px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .filter {
+    flex-direction: row-reverse;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 2;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
   .filter__text {
-    padding-top: 3px;
-    margin-left: 14px;
-    font-size: 13px;
+    margin-left: 0;
+    margin-right: 14px;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 648px) {
+  .filter__text {
+    font-size: 11px;
     font-weight: 400;
     line-height: 18px;
+    margin-right: 9px;
   }
 
-  .filter__switch {
-    position: relative;
-    display: inline-block;
-    width: 36px;
-    height: 20px;
-    z-index: 1;
-    transition: opacity 0.3s linear;
-    cursor: pointer;
+  .filter {
+    justify-content: center;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    margin: 0;
   }
-
-  .filter__switch {
-    opacity: 0.7;
-  }
-
-  .filter__switch input {
-    display:none;
-  }
-
-  .filter__silder {
-    position: absolute;
-    border-radius: 34px;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    -webkit-transition: .4s;
-    transition: .4s;
-    background-color: #2BE080;
-  }
-
-  .filter__silder:before {
-    position: absolute;
-    border-radius: 50%;
-    content: "";
-    height: 16px;
-    width: 16px;
-    left: 18px;
-    bottom: 2px;
-    background-color: #fff;
-    -webkit-transition: .4s;
-    transition: .4s;
-
-  }
-
-  input:checked + .filter__silder {
-    background-color: #EBEBEB;
-  }
-
-  input:focus + .filter__silder {
-    box-shadow: 0 0 1px #2BE080;
-  }
-
-  input:checked + .filter__silder:before {
-    -webkit-transform: translateX(-16px);
-    -ms-transform: translateX(-16px);
-    transform: translateX(-16px);
-  }
-
-  @media only screen and (max-width: 1190px) {
-    .filter {
-      margin: 0 30px;
-    }
-  }
-
-  @media screen and (max-width: 768px) {
-    .filter {
-      flex-direction: row-reverse;
-      grid-column-start: 1;
-      grid-column-end: 3;
-      grid-row-start: 2;
-      grid-row-end: 2;
-      margin: 0;
-      padding: 0;
-      align-items: center;
-    }
-  }
-
-
-  @media screen and (max-width: 768px) {
-    .filter__text {
-      margin-left: 0;
-      margin-right: 14px;
-      padding: 0;
-    }
-  }
-
-  @media screen and (max-width: 525px) {
-    .filter__text {
-      font-size: 11px;
-      font-weight: 400;
-      line-height: 18px;
-      margin-right: 9px;
-    }
-
-    .filter {
-      justify-content: center;
-      grid-column-start: 1;
-      grid-column-end: 3;
-      grid-row-start: 2;
-      grid-row-end: 3;
-      margin: 0;
-    }
-  }
+}

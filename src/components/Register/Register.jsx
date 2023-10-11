@@ -38,6 +38,8 @@ function Register({ name, setLoggedIn }) {
         name="email"
         type="email"
         title="E-mail"
+        minLength="2"
+        maxLength="40"
         value={values.email}
         isInputValid={isInputValid.email}
         error={error.email}

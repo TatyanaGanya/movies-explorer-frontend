@@ -3,8 +3,8 @@ import "./AboutProject.css";
 
 function AboutProject() {
   return (
-    <Cover id={"Project"} title="О проекте">
-      <div className="project">
+    <Cover title="О проекте" id={"Project"}>
+      <div className="project" >
         <h3 className="project__title">Дипломный проект включал 5 этапов</h3>
         <p className="project__description">
           Составление плана, работу над бэкендом, вёрстку, добавление

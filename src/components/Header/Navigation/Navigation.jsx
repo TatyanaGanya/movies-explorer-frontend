@@ -25,8 +25,8 @@ function Navigation({ activeState, loggedIn, openHeader }) {
             <NavLink
               to={"/"}
               onClick={openHeader}
-              className={`navigation__link header__link_main ${
-                pathname === "/" ? "navigation_link_page " : ""
+              className={`navigation__link navigation__link_main ${
+                pathname === "/" ? "navigation__link_page " : ""
               }${activeState ? "active" : ""}`}
             >
               Главная
@@ -35,7 +35,7 @@ function Navigation({ activeState, loggedIn, openHeader }) {
               to={"/movies"}
               onClick={openHeader}
               className={`navigation__link ${
-                pathname === "/movies" ? "navigation_link_page" : ""
+                pathname === "/movies" ? "navigation__link_page" : ""
               } ${pathname === "/" ? "navigation__color" : ""}
               ${activeState ? "active" : ""}`}
             >
@@ -46,7 +46,7 @@ function Navigation({ activeState, loggedIn, openHeader }) {
               onClick={openHeader}
               className={`navigation__link ${
                 pathname === "/" ? "navigation__color" : ""
-              } ${pathname === "/saved-movies" ? "navigation_link_page" : ""} ${
+              } ${pathname === "/saved-movies" ? "navigation__link_page" : ""} ${
                 activeState ? "active" : ""
               }`}
             >
@@ -57,8 +57,8 @@ function Navigation({ activeState, loggedIn, openHeader }) {
           <Link
             to={"/profile"}
             onClick={openHeader}
-            className={`navigation__button ${
-              pathname === "/" ? "navigation__button_background" : ""
+            className={`header-acount ${
+              pathname === "/" ? "header-acount_background" : ""
             } ${activeState ? "active" : ""}`}
           >
             <p>Аккаунт</p>

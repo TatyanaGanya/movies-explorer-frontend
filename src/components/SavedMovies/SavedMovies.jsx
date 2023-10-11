@@ -23,10 +23,10 @@ function SavedMovies() {
   }
 
   return (
-    <main>
+    <>
       <SearchForm changeShot={onCheckMoviesSave} />
       <MoviesCardList movies={saveMovie} />
-    </main>
+    </>
   );
 }
 export default SavedMovies;

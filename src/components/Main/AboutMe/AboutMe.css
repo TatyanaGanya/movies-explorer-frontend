@@ -101,6 +101,7 @@
   .aboutme__foto {
     width: 292px;
     height: 352px;
+    margin: 0 auto;
   }
 
   .aboutme__title {
@@ -116,8 +117,15 @@
   }
 }
 
-@media only screen and (max-width: 314px) {
+@media only screen and (max-width: 360px) {
+  .aboutme__foto {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+  }
+}
 
+@media only screen and (max-width: 314px) {
   .aboutme__foto {
     width: 200px;
     height: 330px;

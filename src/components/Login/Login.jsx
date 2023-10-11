@@ -21,6 +21,7 @@ function Login({ name, setLoggedIn }) {
         type="email"
         title="Е-mail"
         minLength="3"
+        maxLength="40"
         value={values.email}
         isInputValid={isInputValid.email}
         onChange={handleChange}

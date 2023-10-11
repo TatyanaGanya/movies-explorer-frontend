@@ -5,7 +5,7 @@ import Form from "../Form/Form.jsx";
 
 function Autorization({ name, children, isValid, onSubmit }) {
   return (
-    <main className="autorization">
+    <section className="autorization">
       <Link to={"/"}>
         <img src={logo} alt="Логотип" className="autorization__logo" />
       </Link>
@@ -32,7 +32,7 @@ function Autorization({ name, children, isValid, onSubmit }) {
       ) : (
         <Link to={"/"}>Выйти из аккаунта</Link>
       )}
-    </main>
+    </section>
   );
 }
 

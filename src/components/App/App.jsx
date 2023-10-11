@@ -5,12 +5,6 @@ import { Route, Routes } from "react-router-dom";
 import Header from "../Header/Header.jsx";
 import Main from "../Main/Main.jsx";
 import Footer from "../Footer/Footer.jsx";
-import Error from "../Error/Error.jsx";
-import Register from "../Register/Register.jsx";
-import Login from "../Login/Login.jsx";
-import Profile from "../Profile/Profile.jsx";
-import Movies from "../Movies/Movies.jsx";
-import SavedMovies from "../SavedMovies/SavedMovies.jsx";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -26,20 +20,19 @@ function App() {
 
   return (
     //  <CurrentUserContext.Provider>
-    //анимация кнопок!!!!
     <div className={`app ${activeState ? "lock" : ""}`}>
       <Routes>
-        {/* авторизация! */}
+        {/* авторизация! перенести в майн / секцион name: signin*/}
         <Route
           path="/signin"
-          element={<Login name="signin" setLoggedIn={setLoggedIn} />}
+          element={<Main name="signin" setLoggedIn={setLoggedIn} />}
         />
         {/* регистрация! */}
         <Route
           path="/signup"
-          element={<Register name="signup" setLoggedIn={setLoggedIn} />}
+          element={<Main name="signup" setLoggedIn={setLoggedIn} />}
         />
-        {/*  «О проекте» ! */}
+        {/*  «О проекте» name: home */}
         <Route
           path="/"
           element={
@@ -49,7 +42,7 @@ function App() {
                 activeState={activeState}
                 openHeader={openHeader}
               />
-              <Main activeState={activeState} />
+              <Main name="home" activeState={activeState} />
               <Footer />
             </>
           }
@@ -64,7 +57,7 @@ function App() {
                 activeState={activeState}
                 openHeader={openHeader}
               />
-              <Movies activeState={activeState} />
+              <Main name="movies" activeState={activeState} />
               <Footer />
             </>
           }
@@ -79,7 +72,7 @@ function App() {
                 activeState={activeState}
                 openHeader={openHeader}
               />
-              <SavedMovies activeState={activeState} />
+              <Main name="savedMovies" activeState={activeState} />
               <Footer />
             </>
           }
@@ -94,7 +87,7 @@ function App() {
                 activeState={activeState}
                 openHeader={openHeader}
               />
-              <Profile name="profile" setLoggedIn={setLoggedIn} />
+              <Main name="profile" setLoggedIn={setLoggedIn} />
             </>
           }
         />
@@ -111,7 +104,7 @@ function App() {
           }
         />
         {/* ошибка ok*/}
-        <Route path="*" element={<Error />} />
+        <Route path="*" element={<Main name="error" />} />
       </Routes>
     </div>
     //  </CurrentUserContext.Provider>

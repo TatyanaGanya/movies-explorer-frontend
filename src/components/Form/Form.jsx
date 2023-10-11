@@ -13,7 +13,7 @@ function Form({ name, children, isValid, onSubmit }) {
       {children}
       {name === "signup" ? (
         <>
-          <span className=" autorization__error request-error">
+          <span className=" autorization-error request-error">
             {"При входе произошла ошибка."}
           </span>
           <button
@@ -28,7 +28,7 @@ function Form({ name, children, isValid, onSubmit }) {
         </>
       ) : name === "signin" ? (
         <>
-          <span className="autorization__error login-error">
+          <span className="autorization-error login-error">
             {"При регистрации произошла ошибка."}
           </span>
           <button
@@ -43,7 +43,7 @@ function Form({ name, children, isValid, onSubmit }) {
         </>
       ) : (
         <>
-          <span className="autorization__error profile__error-profile">
+          <span className="autorization-error profile__error-profile">
             {"При обновлении профиля произошла ошибка."}
           </span>
           <button type="submit" className="profile__change">

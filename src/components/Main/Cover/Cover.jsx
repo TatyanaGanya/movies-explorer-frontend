@@ -1,8 +1,8 @@
 import "./Cover.css";
 
-function Cover({ title, name, children }) {
+function Cover({ title, name, children, id }) {
   return (
-    <section className={`${name !== "techs" ? "cover" : "cover-grey"}`}>
+    <section  id={id} className={`${name !== "techs" ? "cover" : "cover-grey"}`}>
       <h2
         className={`${
           name !== "techs" ? "cover__title" : "cover-grey__title"

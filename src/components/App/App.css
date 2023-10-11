@@ -3,7 +3,11 @@
   padding: 0;
   font-family: "Inter", "Arial", sans-serif;
   font-style: normal;
-  max-width: 100%;
+  max-width: 1280px;
+  box-sizing: border-box;
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
 
 @media screen and (max-width: 768px) {
@@ -14,7 +18,8 @@
     height: 100vh;
   }
 }
-/* 
+
+/*
 * {
   outline: 1px solid red;
 } */

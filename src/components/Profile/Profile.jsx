@@ -22,7 +22,7 @@ function Profile({ name, setLoggedIn }) {
   }
 
   return (
-    <main name="profile" title="Редактировать профиль" className="profile">
+    <section title="Редактировать профиль" className="profile">
       <h1 className="profile__title">Привет, Виталий!</h1>
       <Form name={name} isValid={isValid} onSubmit={onEdit}>
         <Input
@@ -43,6 +43,8 @@ function Profile({ name, setLoggedIn }) {
           name="email"
           type="email"
           title="E-mail"
+          minLength="3"
+          maxLength="40"
           value={values.email}
           isInputValid={isInputValid.email}
           error={error.email}
@@ -53,7 +55,7 @@ function Profile({ name, setLoggedIn }) {
       <Link to={"/"} onClick={outLogin} className="profile__out">
         Выйти из аккаунта
       </Link>
-    </main>
+    </section>
   );
 }
 

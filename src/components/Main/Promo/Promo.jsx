@@ -13,9 +13,7 @@ function Promo() {
         <p className="promo__suptitle">
           Листайте ниже, чтобы узнать больше про этот проект и его создателя.
         </p>
-        <HashLink smooth to="#Project" className="promo__button">
-          Узнать больше
-        </HashLink>
+        <HashLink smooth to='#Project' className="promo__button">Узнать больше</HashLink>
       </div>
     </section>
   );

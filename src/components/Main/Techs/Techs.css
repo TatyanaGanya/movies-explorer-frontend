@@ -90,6 +90,7 @@
     margin: 0 18px;
   }
 }
+
 @media only screen and (max-width: 400px) {
   .techs__lists {
     padding: 50px 0 13px;

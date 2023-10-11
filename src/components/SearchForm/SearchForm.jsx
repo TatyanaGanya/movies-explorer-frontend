@@ -17,7 +17,7 @@ function SearchForm({ changeShot }) {
     }
   }
   return (
-    <>
+    <section>
       <form
         noValidate
         className="search-form"
@@ -42,7 +42,7 @@ function SearchForm({ changeShot }) {
         </button>
         <FilterCheckbox changeShot={changeShot} />
       </form>
-    </>
+    </section>
   );
 }
 

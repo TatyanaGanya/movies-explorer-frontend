@@ -13,9 +13,9 @@ function Portfolio() {
             target="_blank"
           >
             Статичный сайт
-            <button className="portfolio__button" type="button">
+            <p className="portfolio__arrow" >
               ↗
-            </button>
+            </p>
           </Link>
         </li>
         <li className="portfolio__list">
@@ -25,9 +25,9 @@ function Portfolio() {
             target="_blank"
           >
             Адаптивный сайт
-            <button className="portfolio__button" type="button">
+            <p className="portfolio__arrow">
               ↗
-            </button>
+            </p>
           </Link>
         </li>
 
@@ -38,9 +38,9 @@ function Portfolio() {
             target="_blank"
           >
             Одностраничное приложение
-            <button className="portfolio__button" type="button">
+            <p className="portfolio__arrow">
               ↗
-            </button>
+            </p>
           </Link>
         </li>
       </ul>

@@ -4,9 +4,11 @@
   font-weight: 400;
   font-size: 13px;
   line-height: 18px;
-  width: 100vw;
+  width: 100%;
   z-index: 4;
   position: relative;
+  flex: 1;
+  background-color:
 }
 
 .header__content {

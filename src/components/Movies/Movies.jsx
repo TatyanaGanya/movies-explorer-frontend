@@ -7,7 +7,6 @@ function Movies() {
   const [moviesAll, setMoviesAll] = useState([]);
   const [isCheckMoviesAll, setIsCheckMoviesAll] = useState(true);
 
-
   useEffect(() => {
     setMoviesAll(movies);
   }, []);
@@ -22,10 +21,10 @@ function Movies() {
     }
   }
   return (
-    <main>
-            <SearchForm changeShot={onCheckMoviesAll} />
-            <MoviesCardList movies={moviesAll} />
-  </main>
+    <>
+      <SearchForm changeShot={onCheckMoviesAll} />
+      <MoviesCardList movies={moviesAll} />
+    </>
   );
 }
 
