@@ -1,30 +1,50 @@
-import "./Profile.css";
-import { useEffect } from "react";
+import "./Profile.css"; //добавить блок Input не могу поменять данные
 import Form from "../Form/Form";
-import useFormValidation from "../../utils/useFormValidation";
 import Input from "../Input/Input";
+import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
+import useFormValidation from "../../utils/useFormValidation";
+import CurrentUserContext from "../../contexs/CurrentUserContext.js";
+import { emailEdit } from "../../utils/constants.jsx";
 
-function Profile({ name, setLoggedIn }) {
+function Profile({
+  name, //? css
+  handleProfile, //changename
+  setIsError,
+  outLogin, //exit
+  setSuccess,
+  isSuccess,
+  setIsBlock, // save
+  isBlock,
+}) {
+  const currentUser = useContext(CurrentUserContext);
   const { values, error, isInputValid, isValid, handleChange, reset } =
     useFormValidation();
 
   useEffect(() => {
-    reset({ username: "Виталий!", email: "pochta@yandex.ru" });
-  }, [reset]);
+    reset({ username: currentUser.name, email: currentUser.email });
+  }, [reset, currentUser, isBlock]);
 
   function onEdit(e) {
     e.preventDefault();
-  }
 
-  function outLogin() {
-    setLoggedIn(false);
+    handleProfile(values.username, values.email);
   }
 
   return (
     <section title="Редактировать профиль" className="profile">
-      <h1 className="profile__title">Привет, Виталий!</h1>
-      <Form name={name} isValid={isValid} onSubmit={onEdit}>
+      <h1 className="profile__title">{`Привет, ${currentUser.name}!`}</h1>
+      <Form
+        name={name}
+        setSuccess={setSuccess}
+        isSuccess={isSuccess}
+        isValid={isValid}
+        values={values}
+        onSubmit={onEdit}
+        setIsError={setIsError}
+        setIsBlock={setIsBlock}
+        isBlock={isBlock}
+      >
         <Input
           selectname={name}
           name="username"
@@ -36,6 +56,7 @@ function Profile({ name, setLoggedIn }) {
           isInputValid={isInputValid.username}
           error={error.username}
           onChange={handleChange}
+          isBlock={isBlock}
         />
 
         <Input
@@ -49,6 +70,8 @@ function Profile({ name, setLoggedIn }) {
           isInputValid={isInputValid.email}
           error={error.email}
           onChange={handleChange}
+          pattern={emailEdit}
+          isBlock={isBlock}
         />
       </Form>
 

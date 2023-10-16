@@ -11,8 +11,8 @@ function Input({
   minLength,
   maxLength,
   selectname,
-})
-{
+  isBlock,
+}) {
   return (
     <>
       {selectname === "profile" ? (
@@ -33,9 +33,10 @@ function Input({
               onChange={onChange}
               placeholder={title}
               required
+              disabled={ !isBlock }
             />
+            <span className="profile-error">{error}</span>
           </label>
-          <span className="profile-error">{error}</span>
         </>
       ) : (
         <label className="login">
@@ -55,6 +56,7 @@ function Input({
             autoComplete="on"
             onChange={onChange}
             required
+
           />
           <span className="profile-error">{error}</span>
         </label>

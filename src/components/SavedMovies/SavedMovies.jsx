@@ -1,31 +1,67 @@
 import SearchForm from "../SearchForm/SearchForm.jsx";
 import MoviesCardList from "../MoviesCardList/MoviesCardList.jsx";
-import { useEffect, useState } from "react";
-import { saveMovies } from "../../utils/constants.jsx";
+import { useState, useCallback, useEffect } from "react";
 
-function SavedMovies() {
-  const [saveMovie, setSaveMovie] = useState([]);
+function SavedMovies({ savedMovies, onDelete, setIsError }) {
+  const [saveMovie, setSaveMovie] = useState(savedMovies);
+  const [isCheckMoviesSave, setIsCheckMoviesSave] = useState(false);
+  const [searchedMouvie, setSearchedMovie] = useState("");
+  const [firstEntrance, setFirstEntrance] = useState(true);
 
-  const [isCheckMoviesSave, setIsCheckMoviesSave] = useState(true);
+  const moviesList = useCallback((search, isCheckMoviesSave, movies) => {
+    setSearchedMovie(search);
+    setSaveMovie(
+      movies.filter((movie) => {
+        const searchName = movie.nameRU
+          .toLowerCase()
+          .includes(search.toLowerCase());
+        return isCheckMoviesSave
+          ? searchName && movie.duration <= 40
+          : searchName;
+      })
+    );
+  }, []);
+
+  function searchMovies(search) {
+    setFirstEntrance(false);
+    moviesList(search, isCheckMoviesSave, savedMovies);
+  }
 
   useEffect(() => {
-    setSaveMovie(saveMovies);
-  }, []);
+    if (savedMovies.length === 0) {
+      setFirstEntrance(true);
+    } else {
+      setFirstEntrance(false);
+    }
+    moviesList(searchedMouvie, isCheckMoviesSave, savedMovies);
+  }, [moviesList, savedMovies, isCheckMoviesSave, searchedMouvie]);
 
   function onCheckMoviesSave() {
     if (isCheckMoviesSave) {
       setIsCheckMoviesSave(false);
-      setSaveMovie(saveMovie.filter((element) => element.duration > 40));
+      moviesList(searchedMouvie, isCheckMoviesSave, savedMovies);
     } else {
       setIsCheckMoviesSave(true);
-      setSaveMovie(saveMovies);
+      moviesList(searchedMouvie, isCheckMoviesSave, savedMovies);
     }
   }
 
   return (
     <>
-      <SearchForm changeShot={onCheckMoviesSave} />
-      <MoviesCardList movies={saveMovie} />
+      <SearchForm
+        isCheck={isCheckMoviesSave}
+        searchMovies={searchMovies}
+        searchedMovie={searchedMouvie}
+        setIsError={setIsError}
+        firstEntrance={firstEntrance}
+        changeShot={onCheckMoviesSave}
+        savedMovie={savedMovies}
+      />
+      <MoviesCardList
+        movies={saveMovie}
+        onDelete={onDelete}
+        firstEntrance={firstEntrance}
+      />
     </>
   );
 }

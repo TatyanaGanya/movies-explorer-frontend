@@ -10,7 +10,22 @@ import Profile from "../Profile/Profile.jsx";
 import Movies from "../Movies/Movies.jsx";
 import SavedMovies from "../SavedMovies/SavedMovies.jsx";
 
-function Main({ name, setLoggedIn, activeState }) {
+function Main({
+  name,
+  setLoggedIn,
+  handleLogin,
+  handleRegister,
+  handleProfile,
+  setIsError,
+  outLogin,
+  onDelete,
+  setSuccess,
+  isSuccess,
+  savedMovies,
+  addMovie,
+  setIsBlock,
+  isBlock,
+}) {
   return (
     <main className="main">
       {
@@ -26,28 +41,54 @@ function Main({ name, setLoggedIn, activeState }) {
           ),
           signin: (
             <>
-              <Login name="signin" setLoggedIn={setLoggedIn} />
+              <Login
+                name="signin"
+                handleLogin={handleLogin}
+                setIsError={setIsError}
+              />
             </>
           ),
           signup: (
             <>
-              <Register name="signup" setLoggedIn={setLoggedIn} />
+              <Register
+                name="signup"
+                handleRegister={handleRegister}
+                setIsError={setIsError}
+              />
             </>
           ),
           profile: (
             <>
-              <Profile name="profile" setLoggedIn={setLoggedIn} />
+              <Profile
+                name="profile"
+                setLoggedIn={setLoggedIn}
+                handleProfile={handleProfile}
+                outLogin={outLogin}
+                setSuccess={setSuccess}
+                isSuccess={isSuccess}
+                setIsError={setIsError}
+                setIsBlock={setIsBlock}
+                isBlock={isBlock}
+              />
             </>
           ),
           error: <Error />,
           movies: (
             <>
-              <Movies activeState={activeState} />
+              <Movies
+                savedMovies={savedMovies}
+                addMovie={addMovie}
+                setIsError={setIsError}
+              />
             </>
           ),
           savedMovies: (
             <>
-              <SavedMovies activeState={activeState} />
+              <SavedMovies
+                savedMovies={savedMovies}
+                onDelete={onDelete}
+                setIsError={setIsError}
+              />
             </>
           ),
         }[name]

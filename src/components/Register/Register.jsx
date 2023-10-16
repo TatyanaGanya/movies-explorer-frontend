@@ -1,25 +1,28 @@
-import Autorization from "../Autorization/Autorization";
+import Autorization from "../Autorization/Autorization"; //
 import Input from "../Input/Input.jsx";
 import useFormValidation from "../../utils/useFormValidation";
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { emailEdit } from "../../utils/constants.jsx";
 
-function Register({ name, setLoggedIn }) {
-  const navigate = useNavigate();
-  const { values, error, isInputValid, isValid, handleChange, reset } =
+function Register({ name, handleRegister, setIsError }) {
+  const { values, error, isInputValid, isValid, handleChange } =
     useFormValidation();
 
-  function onLogin(e) {
+  function onRegister(e) {
     e.preventDefault();
-    navigate("/signin");
-    setLoggedIn(true);
+    handleRegister({
+      name: values.username,
+      email: values.email,
+      password: values.password,
+    });
   }
-  useEffect(() => {
-    reset({ username: "Виталий!", email: "pochta@yandex.ru" });
-  }, [reset]);
 
   return (
-    <Autorization name={name} isValid={isValid} onSubmit={onLogin}>
+    <Autorization
+      name={name}
+      isValid={isValid}
+      setIsError={setIsError}
+      onSubmit={onRegister}
+    >
       <Input
         selectname={name}
         name="username"
@@ -30,7 +33,13 @@ function Register({ name, setLoggedIn }) {
         value={values.username}
         isInputValid={isInputValid.username}
         error={error.username}
-        onChange={handleChange}
+        onChange={(evt) => {
+          handleChange(evt);
+          setIsError(false);
+        }}
+        // autoComplete="off"
+        placeholder="Введите имя"
+        required
       />
 
       <Input
@@ -40,10 +49,17 @@ function Register({ name, setLoggedIn }) {
         title="E-mail"
         minLength="2"
         maxLength="40"
-        value={values.email}
+        value={values.email || ""}
         isInputValid={isInputValid.email}
         error={error.email}
-        onChange={handleChange}
+        onChange={(evt) => {
+          handleChange(evt);
+          setIsError(false);
+        }}
+        //autoComplete="off"
+        pattern={emailEdit}
+        placeholder="Введите электронную почту"
+        required
       />
 
       <Input
@@ -56,7 +72,13 @@ function Register({ name, setLoggedIn }) {
         value={values.password}
         isInputValid={isInputValid.password}
         error={error.password}
-        onChange={handleChange}
+        onChange={(evt) => {
+          handleChange(evt);
+          setIsError(false);
+        }}
+        //autoComplete="off"
+        placeholder="Введите пароль"
+        required
       />
     </Autorization>
   );

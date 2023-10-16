@@ -18,6 +18,7 @@
 
 .card__image {
   height: 151px;
+  width: 270px;
   overflow: hidden;
   object-fit: cover;
   transition: opacity 0.3s linear;
@@ -72,11 +73,13 @@
 @media screen and (max-width: 1000px) {
   .card__image {
     height: 190px;
+    width: 339px;
   }
 }
 @media screen and (max-width: 738px) {
   .card__image {
     height: 168px;
+    width: 300px;
   }
 }
 @media screen and (max-width: 318px) {

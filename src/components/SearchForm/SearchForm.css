@@ -50,6 +50,14 @@
   position: absolute;
   top: 35px;
   left: 50%;
+  opacity: 0;
+}
+.search-form__error_active{
+  opacity: 1;
+}
+.search-form__submit_disabled {
+  background: #f8f8f8;
+  color: #C2C2C2;
 }
 
 @media only screen and (max-width: 1190px) {
