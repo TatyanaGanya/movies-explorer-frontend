@@ -173,7 +173,7 @@ function App() {
                     ) : (
                       <Main
                         name="signin"
-                        onLogin={handleLogin}
+                        handleLogin={handleLogin}
                         setIsError={setIsError}
                       />
                     )
