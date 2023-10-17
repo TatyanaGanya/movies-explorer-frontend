@@ -12,6 +12,7 @@ function Input({
   maxLength,
   selectname,
   isBlock,
+  pattern,
 }) {
   return (
     <>
@@ -34,6 +35,7 @@ function Input({
               placeholder={title}
               required
               disabled={ !isBlock }
+              pattern={pattern}
             />
             <span className="profile-error">{error}</span>
           </label>
@@ -56,6 +58,7 @@ function Input({
             autoComplete="on"
             onChange={onChange}
             required
+            pattern={pattern}
 
           />
           <span className="profile-error">{error}</span>

@@ -1,9 +1,3 @@
-///пихнуть плеадер везде где можно и добавить успех
-//проверить перезагрузку и ошибки вездеищезают?
-//успешное выполнение!
-//код ошибки ( заные прописать span если ошибка 409 / ошибка 400 )
-///setIsResultPopupOpen(true);    ok  no
-
 import "./App.css";
 import CurrentUserContext from "../../contexs/CurrentUserContext";
 import ProtectedRoute from "../../contexs/ProtectedRoute";
@@ -11,23 +5,25 @@ import ProtectedPage from "../../contexs/ProtectedPage";
 import mainApi from "../../utils/MainApi.js";
 import ErrorContext from "../../contexs/ErrorContext.js";
 import { useState, useCallback, useEffect } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import Header from "../Header/Header.jsx";
 import Main from "../Main/Main.jsx";
 import Footer from "../Footer/Footer.jsx";
+import Preloader from "../Preloader/Preloader";
 
 // START
 function App() {
   const navigate = useNavigate();
+  const [activeState, setActiveState] = useState(false); // бургер-меню
   const [currentUser, setCurrentUser] = useState({}); //обьект юзера
   const [loggedIn, setLoggedIn] = useState(false); //логин пользователя
-  const [activeState, setActiveState] = useState(false); // бургер-меню
   const [isError, setIsError] = useState(false); // ошибка ввода данных
   const [isSuccess, setIsSuccess] = useState(false); //редактирование профиля (успех)
   const [isBlock, setIsBlock] = useState(true); //отрисовка кнопки "сохранить"
-  const [savedMovies, setSavedMovies] = useState([]);
+  const [isCheckToken, setIsCheckToken] = useState(true);
+  const [savedMovies, setSavedMovies] = useState([]); //сохраненные фильмы
 
-  //бургер меню открытие
+  //бургер меню
   function openHeader() {
     if (document.documentElement.clientWidth > "768") {
       setActiveState(false);
@@ -47,13 +43,16 @@ function App() {
           setSavedMovies(dataMovies.reverse());
           setCurrentUser(dataUser);
           setLoggedIn(true);
+          setIsCheckToken(false);
         })
         .catch((err) => {
           console.error(`Ошибка получения масива и данных: ${err}`);
+          setIsCheckToken(false);
           localStorage.clear();
         });
     } else {
       setLoggedIn(false);
+      setIsCheckToken(false);
       localStorage.clear();
     }
   }, [loggedIn]);
@@ -157,106 +156,120 @@ function App() {
   }
 
   return (
-    <CurrentUserContext.Provider value={currentUser}>
-      <ErrorContext.Provider value={isError}>
-        <div className={`app ${activeState ? "lock" : ""}`}>
-          <Routes>
-            {/* авторизация!*/}
-            <Route
-              path="/signin"
-              element={
-                <Main
-                  name="signin"
-                  handleLogin={handleLogin}
-                  setIsError={setIsError}
+    <>
+      {isCheckToken ? (
+        <Preloader />
+      ) : (
+        <CurrentUserContext.Provider value={currentUser}>
+          <ErrorContext.Provider value={isError}>
+            <div className={`app ${activeState ? "lock" : ""}`}>
+              <Routes>
+                {/* авторизация!*/}
+                <Route
+                  path="/signin"
+                  element={
+                    loggedIn ? (
+                      <Navigate to="/" replace />
+                    ) : (
+                      <Main
+                        name="signin"
+                        onLogin={handleLogin}
+                        setIsError={setIsError}
+                      />
+                    )
+                  }
                 />
-              }
-            />
-            {/* регистрация! */}
-            <Route
-              path="/signup"
-              element={
-                <Main
-                  name="signup"
-                  handleRegister={handleRegister}
-                  setIsError={setIsError}
+                {/* регистрация! */}
+                <Route
+                  path="/signup"
+                  element={
+                    loggedIn ? (
+                      <Navigate to="/" replace />
+                    ) : (
+                      <Main
+                        name="signup"
+                        handleRegister={handleRegister}
+                        setIsError={setIsError}
+                      />
+                    )
+                  }
                 />
-              }
-            />
-            {/*  «О проекте» name: home  ок*/}
-            <Route
-              path="/"
-              element={
-                <>
-                  <Header
-                    loggedIn={loggedIn}
-                    activeState={activeState}
-                    openHeader={openHeader}
-                  />
-                  <Main name="home" activeState={activeState} />
-                  <Footer />
-                </>
-              }
-            />
-            {/* Фильмы защищен !*/}
-            <Route
-              path="/movies"
-              element={
-                <ProtectedRoute
-                  element={ProtectedPage}
-                  name="movies"
-                  savedMovies={savedMovies}
-                  addMovie={handleMovieLike}
-                  loggedIn={loggedIn}
-                  setIsError={setIsError}
-                  activeState={activeState}
-                  openHeader={openHeader}
+                {/*  «О проекте» name: home  ок*/}
+                <Route
+                  path="/"
+                  element={
+                    <>
+                      <Header
+                        loggedIn={loggedIn}
+                        activeState={activeState}
+                        openHeader={openHeader}
+                      />
+                      <Main name="home" activeState={activeState} />
+                      <Footer />
+                    </>
+                  }
                 />
-              }
-            />
-            {/* Сохранённые фильмы  protected!*/}
-            <Route
-              path="/saved-movies"
-              element={
-                <ProtectedRoute
-                  element={ProtectedPage}
-                  name="savedMovies"
-                  savedMovies={savedMovies}
-                  addMovie={handleMovieLike}
-                  loggedIn={loggedIn}
-                  setIsError={setIsError}
-                  activeState={activeState}
-                  openHeader={openHeader}
-                  onDelete={handleDeleteMovie}
+                {/* Фильмы защищен !*/}
+                <Route
+                  path="/movies"
+                  element={
+                    <ProtectedRoute
+                      element={ProtectedPage}
+                      name="movies"
+                      savedMovies={savedMovies}
+                      addMovie={handleMovieLike}
+                      loggedIn={loggedIn}
+                      setIsError={setIsError}
+                      activeState={activeState}
+                      openHeader={openHeader}
+                    />
+                  }
                 />
-              }
-            />
-            {/* акаунт protected*/}
-            <Route
-              path="/profile"
-              element={
-                <ProtectedRoute
-                  element={ProtectedPage}
-                  loggedIn={loggedIn}
-                  setIsError={setIsError}
-                  openHeader={openHeader}
-                  name="profile"
-                  setLoggedIn={setLoggedIn}
-                  handleProfile={handleProfile}
-                  outLogin={outLogin}
-                  isSuccess={isSuccess}
-                  setSuccess={setSuccess}
-                  setIsBlock={setIsBlock}
-                  isBlock={isBlock}
+                {/* Сохранённые фильмы  protected!*/}
+                <Route
+                  path="/saved-movies"
+                  element={
+                    <ProtectedRoute
+                      element={ProtectedPage}
+                      name="savedMovies"
+                      savedMovies={savedMovies}
+                      addMovie={handleMovieLike}
+                      loggedIn={loggedIn}
+                      setIsError={setIsError}
+                      activeState={activeState}
+                      openHeader={openHeader}
+                      onDelete={handleDeleteMovie}
+                    />
+                  }
                 />
-              }
-            />
-            {/* ошибка ok*/}
-            <Route path="*" element={<Main name="error" />} />
-          </Routes>
-        </div>
-      </ErrorContext.Provider>
-    </CurrentUserContext.Provider>
+                {/* акаунт protected*/}
+                <Route
+                  path="/profile"
+                  element={
+                    <ProtectedRoute
+                      element={ProtectedPage}
+                      loggedIn={loggedIn}
+                      setIsError={setIsError}
+                      openHeader={openHeader}
+                      name="profile"
+                      setLoggedIn={setLoggedIn}
+                      handleProfile={handleProfile}
+                      outLogin={outLogin}
+                      isSuccess={isSuccess}
+                      setSuccess={setSuccess}
+                      setIsBlock={setIsBlock}
+                      isBlock={isBlock}
+                    />
+                  }
+                />
+                {/* ошибка ok*/}
+                <Route path="*" element={<Main name="error" />} />
+              </Routes>
+            </div>
+          </ErrorContext.Provider>
+        </CurrentUserContext.Provider>
+      )}
+    </>
   );
 }
 

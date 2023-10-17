@@ -12,6 +12,7 @@ function SearchForm({
   searchMovies,
   setIsError,
   savedMovie,
+  isCheck
 }) {
   const { values, handleChange, reset } = useFormValidation();
   const { pathname } = useLocation();
@@ -77,7 +78,7 @@ function SearchForm({
         </button>
       </form>
 
-      <FilterCheckbox changeShot={changeShot} />
+      <FilterCheckbox changeShot={changeShot} isCheck={isCheck} />
     </section>
   );
 }

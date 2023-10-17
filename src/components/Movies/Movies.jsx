@@ -1,24 +1,24 @@
+//сбой isCheckMoviesAll при первом  запуске????
+
 import SearchForm from "../SearchForm/SearchForm.jsx";
 import MoviesCardList from "../MoviesCardList/MoviesCardList.jsx";
 import { useCallback, useEffect, useState } from "react";
 import getCards from "../../utils/MoviesApi";
 
 function Movies({ setIsError, addMovie, savedMovies }) {
-  const [moviesAll, setMoviesAll] = useState([]);
-  const [isCheckMoviesAll, setIsCheckMoviesAll] = useState(false);
+  const [moviesAll, setMoviesAll] = useState([]); //все фильмы
+  const [isCheckMoviesAll, setIsCheckMoviesAll] = useState(false); //переключение короткометражек
   const [filteredMovies, setFilteredMovies] = useState([]);
-  const [searchedMouvie, setSearchedMovie] = useState("");
+  const [searchedMouvie, setSearchedMovie] = useState(""); //поиск из input
   const [isLoading, setIsLoading] = useState(false);
-  const [serverError, setServerError] = useState(false);
-  const [firstEntrance, setFirstEntrance] = useState(true);
+  const [serverError, setServerError] = useState(false); // серверная ошибка
+  const [firstEntrance, setFirstEntrance] = useState(true); //первый вход
 
   const filter = useCallback((search, isCheckMoviesAll, movies) => {
     setSearchedMovie(search);
-
     localStorage.setItem("movie", JSON.stringify(search));
     localStorage.setItem("shorts", JSON.stringify(isCheckMoviesAll));
     localStorage.setItem("allmovies", JSON.stringify(movies));
-
     setFilteredMovies(
       movies.filter((movie) => {
         const searchName = movie.nameRU
@@ -30,6 +30,7 @@ function Movies({ setIsError, addMovie, savedMovies }) {
       })
     );
   }, []);
+
 
   function searchMovies(search) {
     if (moviesAll.length === 0) {
@@ -56,15 +57,15 @@ function Movies({ setIsError, addMovie, savedMovies }) {
     if (localStorage.allmovies && localStorage.shorts && localStorage.movie) {
       const movies = JSON.parse(localStorage.allmovies);
       const search = JSON.parse(localStorage.movie);
-      const isCheck = JSON.parse(localStorage.shorts);
+      const isCheckMoviesAll = JSON.parse(localStorage.shorts);
       setServerError(false);
       setFirstEntrance(false);
       setSearchedMovie(search);
       setIsCheckMoviesAll(isCheckMoviesAll);
       setMoviesAll(movies);
-      filter(search, isCheck, movies);
+      filter(search, isCheckMoviesAll, movies);
     }
-  }, [filter, isCheckMoviesAll]);
+  }, [filter]);
 
   function changeShot() {
     if (isCheckMoviesAll) {
@@ -77,7 +78,8 @@ function Movies({ setIsError, addMovie, savedMovies }) {
       localStorage.setItem("shorts", JSON.stringify(true));
     }
   }
-
+  console.log(isCheckMoviesAll)
+  
   return (
     <>
       <SearchForm

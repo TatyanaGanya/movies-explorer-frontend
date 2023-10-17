@@ -40,56 +40,46 @@ function Main({
             </>
           ),
           signin: (
-            <>
-              <Login
-                name="signin"
-                handleLogin={handleLogin}
-                setIsError={setIsError}
-              />
-            </>
+            <Login
+              name="signin"
+              handleLogin={handleLogin}
+              setIsError={setIsError}
+            />
           ),
           signup: (
-            <>
-              <Register
-                name="signup"
-                handleRegister={handleRegister}
-                setIsError={setIsError}
-              />
-            </>
+            <Register
+              name="signup"
+              handleRegister={handleRegister}
+              setIsError={setIsError}
+            />
           ),
           profile: (
-            <>
-              <Profile
-                name="profile"
-                setLoggedIn={setLoggedIn}
-                handleProfile={handleProfile}
-                outLogin={outLogin}
-                setSuccess={setSuccess}
-                isSuccess={isSuccess}
-                setIsError={setIsError}
-                setIsBlock={setIsBlock}
-                isBlock={isBlock}
-              />
-            </>
+            <Profile
+              name="profile"
+              setLoggedIn={setLoggedIn}
+              handleProfile={handleProfile}
+              outLogin={outLogin}
+              setSuccess={setSuccess}
+              isSuccess={isSuccess}
+              setIsError={setIsError}
+              setIsBlock={setIsBlock}
+              isBlock={isBlock}
+            />
           ),
           error: <Error />,
           movies: (
-            <>
-              <Movies
-                savedMovies={savedMovies}
-                addMovie={addMovie}
-                setIsError={setIsError}
-              />
-            </>
+            <Movies
+              savedMovies={savedMovies}
+              addMovie={addMovie}
+              setIsError={setIsError}
+            />
           ),
           savedMovies: (
-            <>
-              <SavedMovies
-                savedMovies={savedMovies}
-                onDelete={onDelete}
-                setIsError={setIsError}
-              />
-            </>
+            <SavedMovies
+              savedMovies={savedMovies}
+              onDelete={onDelete}
+              setIsError={setIsError}
+            />
           ),
         }[name]
       }

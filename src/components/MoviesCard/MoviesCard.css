@@ -81,6 +81,15 @@
     height: 168px;
     width: 300px;
   }
+  
+  .card__save_delete {
+    background-color: #f9f9f9;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    background-size: 10px;
+    background-image: url(../../images/icon__x.svg);
+  }
 }
 @media screen and (max-width: 318px) {
   .card__image {
