@@ -17,6 +17,8 @@
     z-index: 6;
     position: absolute;
     right: 33px;
+    cursor: pointer;
+
   }
 
   .header__burger span {

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import logo from "../../images/logo.svg";
 import Form from "../Form/Form.jsx";
 
-function Autorization({ name, children, isValid, onSubmit }) {
+function Autorization({ name, children, isValid, onSubmit, setIsError }) {
   return (
     <section className="autorization">
       <Link to={"/"}>
@@ -12,7 +12,12 @@ function Autorization({ name, children, isValid, onSubmit }) {
       <h1 className="autorization__title">
         {name === "signin" ? "Рады видеть!" : "Добро пожаловать!"}
       </h1>
-      <Form name={name} isValid={isValid} onSubmit={onSubmit}>
+      <Form
+        name={name}
+        isValid={isValid}
+        onSubmit={onSubmit}
+        setIsError={setIsError}
+      >
         {children}
       </Form>
       {name === "signin" ? (

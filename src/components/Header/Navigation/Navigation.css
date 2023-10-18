@@ -80,12 +80,12 @@
     align-items: center;
     justify-content: flex-start;
     padding: 136px 0 0;
-    right: 0;
-    opacity: 0;
+    right: -100%;
+
   }
 
   .navigation.active {
-    opacity: 1;
+    right: 0;
   }
 
   .navigation__link {
